@@ -1,0 +1,109 @@
+@import './_variables.scss';
+
+.search-container {
+    width: 90%;
+    max-width: 700px;
+    margin: 2rem auto;
+    padding: 1rem;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: $feature-bg-color;
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 10%;
+        background: $highlight-color-shadow;
+        clip-path: polygon(0% 0%, 100% 0%, 98% 100%, 2% 100%);
+        
+    }
+    
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+        
+        & > div {
+            margin: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            & > *:focus {
+                box-shadow: 0 0 0 4px $focus-color;
+            }
+
+            label, select, input {
+                margin: 0 0.5rem;
+            }
+            
+            select, input {
+                background-color: white;
+                border: none;
+                border-radius: 0.5rem;
+                padding: 0.5rem;
+            }
+            
+            input {
+                background-color: white;
+            }
+            
+            .search-icon {
+                width: 32px;
+                height: 32px;
+                background-image: url('http://newsite.herslof.com/wp-content/uploads/2017/07/magnifying-glass-icon-16.png');
+                filter: invert(100%);
+                background-size: 90%;
+                background-repeat: no-repeat;
+                transform: rotate(-20deg);
+                cursor: pointer;
+                transition: transform 400ms ease, background-size 400ms ease;
+                
+                &:hover {
+                    // filter: invert(0);
+                    transform: rotate(0);
+                    background-size: 100%;
+                }
+            }
+        }
+
+    }
+
+    .advanced-search-checkbox:checked + .advanced-search {
+        display: flex;
+    }
+
+    .advanced-search {
+        display: none;
+        padding: 0.5rem;
+        width: 100%;
+        border: 1px solid white;
+        flex-direction: column;
+        flex-wrap: wrap;
+
+        input, select {
+            margin: 0.5rem auto;
+        }
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .search-container {        
+        form {
+            flex-direction: row;
+        }
+
+        .advanced-search {
+            flex-direction: row;
+        }
+    }
+}
