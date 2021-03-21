@@ -35,3 +35,17 @@ export const getLatest = () => async(dispatch) => {
         })
     }
 }
+
+export const LatestAdditionsView = () => {
+    console.log('clicked')
+    return {
+        type: 'LATEST_ADDITIONS'
+    }
+}
+
+export const SearchResultsView = () => {
+    console.log('clicked')
+    return {
+        type: 'SEARCH_RESULTS'
+    }
+}

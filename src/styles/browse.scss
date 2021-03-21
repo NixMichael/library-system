@@ -4,15 +4,15 @@
     width: 90%;
     gap: 1rem;
 
-    a {
+    div {
         color: black;
-        text-decoration: none;
         text-transform: uppercase;
         background: white;
         border-top-left-radius: 4px;
         border-top-right-radius: 4px;
         padding: 0.5rem;
         transition: box-shadow 200ms ease;
+        cursor: pointer;
 
         &:last-child {
             background: rgb(238, 236, 236);

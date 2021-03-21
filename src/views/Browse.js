@@ -4,30 +4,32 @@ import Search from '../components/Search'
 import Results from '../components/Results'
 import Suggestions from '../components/Suggestions'
 import '../styles/browse.scss'
-import { getLatest } from '../state/actions/searchActions';
+import { LatestAdditionsView, SearchResultsView, getLatest } from '../state/actions/searchActions';
 
 const Browse = () => {
 
     const dispatch = useDispatch()
 
+    const latestView = useSelector(state => state.browseView)
+    console.log('test', latestView)
+
     useEffect(() => {
+        // dispatch(LatestAdditionsView())
         dispatch(getLatest())
     }, [dispatch])
-
-    let searchResultsExist = useSelector(state => state.searchReducer)
 
     return (
         <div className='main-content'>
             <h3>Browse</h3>
             <Search />
             <div className='browse-section-links'>
-                <a href='https://michaelnix.dev'>Latest Additions</a>
-                <a href='https://michaelnix.dev'>Results</a>
+                <div onClick={() => dispatch(LatestAdditionsView())}>Latest Additions</div>
+                <div onClick={() => dispatch(SearchResultsView())}>Results</div>
             </div>
-            {searchResultsExist.data.length > 0 ?
-                <Results/>
-                :
+            { latestView ?
                 <Suggestions />
+                :
+                <Results/>
             }
         </div>
     )

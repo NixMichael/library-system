@@ -46,3 +46,16 @@ export const latestReducer = (state = {}, action) => {
             return state
     }
 }
+
+export const browseViewReducer = (state = true, action) => {
+    switch (action.type) {
+        case 'LATEST_ADDITIONS':
+            console.log('activated')
+            return true
+        case 'SEARCH_RESULTS':
+            console.log('activated')
+            return false
+        default:
+            return state
+    }
+}
