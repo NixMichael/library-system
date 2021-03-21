@@ -1,7 +1,13 @@
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import '../styles/search.scss'
+import { searchInProgress } from '../state/actions/searchActions'
 
 const Search = () => {
+
+    const dispatch = useDispatch()
+
+    let searching = useSelector(state => state.searchReducer)
 
     const [queryType, setQueryType] = useState('title')
     const [queryText, setQueryText] = useState('')
@@ -12,6 +18,10 @@ const Search = () => {
         } else {
             setQueryText(value)
         }
+    }
+
+    const beginSearch = () => {
+        dispatch(searchInProgress(!searching))
     }
 
     return (
@@ -28,26 +38,40 @@ const Search = () => {
                 </div>
                 <div>
                     <label>for</label>
-                    <input type='text' name='queryText' value={queryText} onChange={(e) => handleChange(e.target)} placeHolder='Search term here'/>
-                    <div class='search-icon'></div>
+                    <input type='text' name='queryText' value={queryText} onChange={(e) => handleChange(e.target)} placeholder='Search term here'/>
+                    <div className='search-icon' onClick={beginSearch}></div>
                 </div>
             </form>
-            <div className='click-action advanced-search-button'>
-                Advanced Search...
-            </div>
-            <input className='advanced-search-checkbox' type='checkbox' />
-            <div className='advanced-search'>
-                <input type='text' name='author' placeHolder='Author&#39;s name' />
-                <select type='text' name='genre'>
-                    <option>Travel</option>
-                    <option>Fantasy</option>
-                    <option>Science Fiction</option>
-                    <option>Mystery</option>
-                    <option>Crime</option>
-                    <option>Non-Fiction</option>
-                </select>
-                <input type='text' name='isbn' placeHolder='ISBN' />
-                <input type='text' name='isbn' placeHolder='Publisher' />
+            <div>
+                <div className='advanced-search-button'>
+                    Advanced Search...
+                </div>
+                <input className='advanced-search-checkbox' type='checkbox' />
+                <div className='advanced-search'>
+                    <div>
+                        <label>Author: </label>
+                        <input type='text' name='author' placeholder='Author&#39;s name' />
+                    </div>
+                    <div>
+                        <label>Genre: </label>
+                        <select type='text' name='genre'>
+                            <option>Travel</option>
+                            <option>Fantasy</option>
+                            <option>Science Fiction</option>
+                            <option>Mystery</option>
+                            <option>Crime</option>
+                            <option>Non-Fiction</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>ISBN: </label>
+                        <input type='text' name='isbn' placeholder='ISBN' />
+                    </div>
+                    <div>
+                        <label>Publisher: </label>
+                        <input type='text' name='publisher' placeholder='Publisher' />
+                    </div>
+                </div>
             </div>
         </div>
     )

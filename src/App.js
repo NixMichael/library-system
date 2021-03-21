@@ -4,6 +4,7 @@ import Navigation from './components/Navigation'
 import Browse from './views/Browse'
 import Register from './views/Register'
 import SignIn from './views/SignIn'
+import MyAccount from './views/MyAccount'
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
           </Route>
           <Route path='/register'>
             <Register />
+          </Route>
+          <Route path='/myaccount'>
+            <MyAccount />
           </Route>
         </Switch>
       </div>

@@ -4,9 +4,6 @@ import '../styles/results.scss'
 const Results = () => {
     return (
         <div className='content'>
-            <div className='sub-sections'>
-                <span>Suggestions</span><span>Results</span>
-            </div>
             <div className='search-results'>
                 <div></div>
                 <div></div>

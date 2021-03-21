@@ -1,10 +1,14 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import { updateSearchFields } from './state/reducers/searchReducers'
+import { updateSearchFieldsReducer, searchReducer, latestReducer } from './state/reducers/searchReducers'
+import { userLoginReducer } from './state/reducers/userReducers'
 
 const reducers = combineReducers({
-    updateSearchFields
+    updateSearchFieldsReducer,
+    searchReducer,
+    latestAdditions: latestReducer,
+    userLogin: userLoginReducer
 })
 
 const initialState = {}

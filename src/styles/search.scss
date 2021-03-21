@@ -14,17 +14,17 @@
     align-items: center;
     background: $feature-bg-color;
     position: relative;
-
+    color: white;
+    
     &::after {
         content: '';
         position: absolute;
         top: 100%;
         left: 0;
         width: 100%;
-        height: 10%;
+        height: 20px;
         background: $highlight-color-shadow;
         clip-path: polygon(0% 0%, 100% 0%, 98% 100%, 2% 100%);
-        
     }
     
     form {
@@ -53,10 +53,6 @@
                 padding: 0.5rem;
             }
             
-            input {
-                background-color: white;
-            }
-            
             .search-icon {
                 width: 32px;
                 height: 32px;
@@ -78,22 +74,58 @@
 
     }
 
-    .advanced-search-checkbox:checked + .advanced-search {
-        display: flex;
-    }
-
-    .advanced-search {
-        display: none;
-        padding: 0.5rem;
+    & > div {
+        position: relative;
         width: 100%;
-        border: 1px solid white;
-        flex-direction: column;
-        flex-wrap: wrap;
 
-        input, select {
-            margin: 0.5rem auto;
+        .advanced-search-button {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    
+        .advanced-search-checkbox {
+            opacity: 0;
+            width: 100%;
+            cursor: pointer;
+            &:checked + .advanced-search {
+                display: flex;
+                opacity: 1;
+                max-height: 50vh;
+                transition: height 200ms ease;
+            }
+        }
+    
+        .advanced-search {
+            display: none;
+            width: 100%;
+            border: 1px solid white;
+            opacity: 0;
+            max-height: 0;
+            flex-direction: column;
+            flex-wrap: wrap;
+
+            & > div {
+                margin: 0 auto;
+
+                label, select, input {
+                    margin: 0 0.5rem;
+                }
+                
+                select, input {
+                    background-color: white;
+                    border: none;
+                    border-radius: 0.5rem;
+                    padding: 0.5rem;
+                    margin: 0.5rem auto;
+                }
+    
+            }
+
         }
     }
+
 }
 
 @media screen and (min-width: 800px) {
